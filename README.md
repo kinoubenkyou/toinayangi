@@ -40,7 +40,7 @@ docker compose down -v
 
 ```shell
 LC_CTYPE=C sh -c "tr -dc [:alnum:] < /dev/urandom | head -c 50 > django_secret_key"
-TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 60"`
 export DJANGO_ALLOWED_HOSTS=`curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/public-hostname`
 ```
 
